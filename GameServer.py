@@ -17,17 +17,14 @@ def conexion():
 
     while True and len(listaJugadores) < 4:
         data, address = sock.recvfrom(4096)
-        listaIPs.append(address)
-        address = address[0]                
+        listaIPs.append(address)        
         print ("======================")        
         data = data.decode("utf-8")
         jugador = Jugador(data, address)
-        listaJugadores.append(jugador)        
-        #print (jugador.nombre, jugador.ip)
-        '''if data:
-            print(data)
-            print(numSockets)
-            sent = sock.sendto(data, address)'''
+        listaJugadores.append(jugador)
+        
+    return sock
+
 
 def startGame():
     #commands
@@ -37,17 +34,18 @@ def startGame():
     print(listaIPs[3])
 
 
-def reparte_inicial():
+def reparte_inicial(sock):
     for i in range(4):
         for jugador in listaJugadores:
             carta = baraja.reparteCarta()
             jugador.anade_carta(carta)
 	
     for jugador in listaJugadores:
-        jugador.muestra_mano()
-	
-    conexion()
-    startGame()
+        jugador.muestra_mano(sock)
 
-conexion()
-reparte_inicial()
+def main():
+    sock = conexion()
+    reparte_inicial(sock)    
+
+
+main()

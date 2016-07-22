@@ -5,8 +5,8 @@ class Carta(object):
 	def __init__(self, numero, palo):
 		self.numero = numero
 		self.palo = palo
-	def imprime_carta(self):
-		print ("%s de %s" % (self.numero, self.palo))
+	def devuelve_carta(self):
+		return self.numero + " de " +  self.palo
 
 class Baraja(object):
 	
@@ -44,16 +44,15 @@ class Baraja(object):
 
 	def muestraCartasRepartidas(self):
 		for x in self.cartas_repartidas:
-			x.imprime_carta()
+			x.devuelve_carta()
 	
 class Jugador(object):	
 
-	def __init__(self, nombre, ip):
+	def __init__(self, nombre, address):
 		self.nombre = nombre
 		self.mano = []
 		self.puntos = 0
-		self.ip = ip
-	
+		self.address = address	
 	def suma_puntos(self, puntos):
 		self.puntos = self.puntos + puntos
 	
@@ -61,41 +60,14 @@ class Jugador(object):
 	def anade_carta(self, carta):
 		self.mano.append(carta)	
 
-	def muestra_mano(self):
+	def muestra_mano(self, sock):
 		print ("Mano de " + self.nombre + ": ")
 		for carta in self.mano:
-			carta.imprime_carta()
+			cartas = carta.devuelve_carta()		
+			print(self.address)	
+			sent = sock.sendto(cartas.encode(), self.address)
 			
-'''
-jugador1 = Jugador("Fernando")
-jugador2 = Jugador("Javier")
-jugador3 = Jugador("Marta")
-jugador4 = Jugador("Felix")
-
-jugadores = [jugador1, jugador2, jugador3, jugador4]
-
-baraja = Baraja()
-
-def reparte_inicial():
-	for i in range(4):
-		for jugador in jugadores:
-			carta = baraja.reparteCarta()
-			jugador.anade_carta(carta)
-		
-reparte_inicial()
-
-for jugador in jugadores:
-	jugador.muestra_mano()
-'''
-
-'''baraja.muestraCartasRepartidas()'''
-
-
-
-
-
-
-
+			
 '''class tapete():
 
 	commandos = [envido, mus, fadsfads]
