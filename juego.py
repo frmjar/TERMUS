@@ -48,10 +48,11 @@ class Baraja(object):
 	
 class Jugador(object):	
 
-	def __init__(self, nombre):
+	def __init__(self, nombre, ip):
 		self.nombre = nombre
 		self.mano = []
 		self.puntos = 0
+		self.ip = ip
 	
 	def suma_puntos(self, puntos):
 		self.puntos = self.puntos + puntos
@@ -65,7 +66,7 @@ class Jugador(object):
 		for carta in self.mano:
 			carta.imprime_carta()
 			
-
+'''
 jugador1 = Jugador("Fernando")
 jugador2 = Jugador("Javier")
 jugador3 = Jugador("Marta")
@@ -85,7 +86,7 @@ reparte_inicial()
 
 for jugador in jugadores:
 	jugador.muestra_mano()
-
+'''
 
 '''baraja.muestraCartasRepartidas()'''
 
