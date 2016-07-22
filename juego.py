@@ -6,7 +6,7 @@ class Carta(object):
 		self.numero = numero
 		self.palo = palo
 	def imprime_carta(self):
-		print "%s de %s" % (self.numero, self.palo)
+		print ("%s de %s" % (self.numero, self.palo))
 
 class Baraja(object):
 	
@@ -61,7 +61,7 @@ class Jugador(object):
 		self.mano.append(carta)	
 
 	def muestra_mano(self):
-		print "Mano de " + self.nombre + ": "
+		print ("Mano de " + self.nombre + ": ")
 		for carta in self.mano:
 			carta.imprime_carta()
 			
@@ -95,11 +95,11 @@ for jugador in jugadores:
 
 
 
-class tapete():
+'''class tapete():
 
 	commandos = [envido, mus, fadsfads]
 	fase1  
-
+'''
 
 
 
