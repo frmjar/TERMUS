@@ -5,13 +5,81 @@ class Carta(object):
 	def __init__(self, numero, palo):
 		self.numero = numero
 		self.palo = palo
-	def devuelve_carta(self):
+	def __str__(self):
 		return self.numero + " de " +  self.palo
+		
+	def __eq__(self, other):
+		if self.numero == "3" and other.numero == "K":
+			return True
+		else if self.numero == "K" and other.numero == "3":
+			return True
+		else:
+			return self.numero == other.numero
+		
+	def __gt__(self, other):
+	
+		figuras = ["J", "Q", "K"]
+	
+		if not (self.numero in figuras or other.numero in figuras):
+			return int(self.numero) > int(other.numero)
+		else if self.numero in figuras and not other.numero in figuras:
+			if other.numero == "3":
+				return False
+			else:
+				return True
+		else if not self.numero in figuras and other.numero in figuras:
+			if self.numero == "3":
+				if other.numero != "K":
+					return True
+				else:
+					return False
+			else:
+				return False
+		else: 
+			if self.numero == "J":
+				return False
+			elif self.numero == "Q":
+				if other.numero == "J"
+					return True
+				else:
+					return False
+			elif self.numero == "K":
+				if other.numero == "K":
+					return False
+				else:
+					return True
+				
+	def __st__(self, other):
+		if not (self.numero in figuras or other.numero in figuras):
+			return int(self.numero) < int(other.numero)
+		else if self.numero in figuras and not other.numero in figuras:
+			if other.numero == "3":
+				if self.numero == "K"
+					return False
+				else:
+					return True
+		else if not self.numero in figuras and other.numero in figuras:
+			if self.numero == "3":
+				return False
+		else: 
+			if self.numero == "J":
+				if other.numero == "J":
+					return False
+				else:
+					return True
+			elif self.numero == "Q":
+				if other.numero == "K"
+					return True
+				else:
+					return False
+			elif self.numero == "K":
+				return False
+			
 
 class Baraja(object):
 	
 	cartas_repartidas = []
-	numeros = ["1", "2", "3", "4", "5", "6", "7","J", "Q", "K"]
+	numeros = ["1", "2", "3", "4", "5", "6", "7", "J", "Q", "K"]
 	palos = ["Bastos", "Oros", "Copas", "Espadas"]
 	
 	def __init__(self):
@@ -43,8 +111,8 @@ class Baraja(object):
 		return carta 
 
 	def muestraCartasRepartidas(self):
-		for x in self.cartas_repartidas:
-			x.devuelve_carta()
+		for carta in self.cartas_repartidas:
+			str(carta)
 	
 class Jugador(object):	
 
@@ -53,9 +121,9 @@ class Jugador(object):
 		self.mano = []
 		self.puntos = 0
 		self.address = address	
+		
 	def suma_puntos(self, puntos):
-		self.puntos = self.puntos + puntos
-	
+		self.puntos = self.puntos + puntos	
 	
 	def anade_carta(self, carta):
 		self.mano.append(carta)	
@@ -68,17 +136,4 @@ class Jugador(object):
 			sent = sock.sendto(cartas.encode(), self.address)
 			
 			
-'''class tapete():
-
-	commandos = [envido, mus, fadsfads]
-	fase1  
-'''
-
-
-
-
-
-
-
-
-
+			

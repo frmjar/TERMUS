@@ -4,6 +4,11 @@ from juego import Jugador
 
 listaIPs = []
 listaJugadores = []
+fase1 = [mus, corto]
+fase2 = [envido, paso]
+fase3 = [envido, paso]
+fase4 = [si, no, envido, paso]
+fase5 = [si, no]
 
 baraja = Baraja()
 
@@ -42,10 +47,30 @@ def reparte_inicial(sock):
 	
     for jugador in listaJugadores:
         jugador.muestra_mano(sock)
+		
+'''def fase_mus():
+	mus = Yes	
+	while mus:
+		for x in listaJugadores:
+'''		
 
 def main():
+
     sock = conexion()
     reparte_inicial(sock)    
 
 
 main()
+
+
+
+
+
+
+
+
+
+
+
+
+
