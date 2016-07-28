@@ -48,7 +48,10 @@ class Carta(object):
 					return False
 				else:
 					return True
-				
+
+	def __ge__(self, other):
+		return self > other or self == other
+
 	def __lt__(self, other):
 
 		figuras = ["J", "Q", "K"]
@@ -77,6 +80,9 @@ class Carta(object):
 					return False
 			elif self.numero == "K":
 				return False
+
+	def __le__(self, other):
+		return self < other or self == other
 			
 
 class Baraja(object):
@@ -137,8 +143,8 @@ class Jugador(object):
 			cartas = carta.devuelve_carta()		
 			print(self.address)	
 			sent = sock.sendto(cartas.encode(), self.address)
-'''			
-			
+		
+'''		
 carta1 = Carta("3", "Bastos")
 carta2 = Carta("3", "Espadas")
 carta3 = Carta("2", "Bastos")
@@ -153,11 +159,10 @@ print (carta1 == carta6)
 print (carta1 > carta3)
 print (carta1 > carta1)
 print (carta1 < carta3)
-print (carta1 > carta5)
+print (carta1 >= carta5)
 print (carta1 == carta5)
 print (carta1 < carta5)
 print (carta1 > carta6)
 print (carta1 == carta6)
-print (carta1 < carta6)
-
+print (carta1 >= carta6)
 '''
