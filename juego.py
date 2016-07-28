@@ -67,6 +67,8 @@ class Carta(object):
 		elif not self.numero in figuras and other.numero in figuras:
 			if self.numero == "3":
 				return False
+			else:
+				return True
 		else: 
 			if self.numero == "J":
 				if other.numero == "J":
@@ -121,7 +123,7 @@ class Baraja(object):
 
 	def muestraCartasRepartidas(self):
 		for carta in self.cartas_repartidas:
-			str(carta)
+			print (carta)
 	
 class Jugador(object):	
 
@@ -135,7 +137,9 @@ class Jugador(object):
 		self.puntos = self.puntos + puntos	
 	
 	def anade_carta(self, carta):
-		self.mano.append(carta)	
+		self.mano.append(carta)
+		if len(self.mano) == 4:
+			self.mano.sort()
 
 	def muestra_mano(self, sock):
 		print ("Mano de " + self.nombre + ": ")
@@ -143,26 +147,45 @@ class Jugador(object):
 			cartas = carta.devuelve_carta()		
 			print(self.address)	
 			sent = sock.sendto(cartas.encode(), self.address)
-		
-'''		
+
+
+'''
+
 carta1 = Carta("3", "Bastos")
 carta2 = Carta("3", "Espadas")
 carta3 = Carta("2", "Bastos")
 carta4 = Carta("Q", "Bastos")
+carta9 = Carta("J", "asf")
+carta10 = Carta("1", "asd")
 carta5 = Carta("Q", "Espadas")
 carta6 = Carta("K", "Bastos")
 
-print (str(carta1))
-print (carta1 == carta2)
-print (carta1 == carta3)
-print (carta1 == carta6)
-print (carta1 > carta3)
-print (carta1 > carta1)
-print (carta1 < carta3)
-print (carta1 >= carta5)
-print (carta1 == carta5)
-print (carta1 < carta5)
-print (carta1 > carta6)
-print (carta1 == carta6)
-print (carta1 >= carta6)
+print (carta1)
+
+print (carta10 == carta2)
+print (carta10 == carta3)
+print (carta10 == carta6)
+print (carta10 < carta3)
+print (carta10 < carta1)
+print (carta10 <= carta3)
+print (carta10 >= carta5)
+print (carta10 == carta5)
+print (carta10 == carta5)
+print (carta10 <= carta5)
+
+
+print (carta10 < carta5)
+print (carta1 > carta5)
+
+print (carta10 <= carta1)
+print (carta10 < carta1)
+print (carta10 == carta1)
+print (carta10 > carta6)
+print (carta10 == carta6)
+print (carta10 >= carta6)
+cartas = [carta1, carta2, carta3, carta4, carta5, carta6, carta9, carta10]
+print (len(cartas))
+cartas.sort()
+for carta in cartas:
+	print (carta)
 '''
