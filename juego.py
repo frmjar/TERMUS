@@ -13,6 +13,10 @@ class Carta(object):
 			return True
 		elif self.numero == "K" and other.numero == "3":
 			return True
+		elif self.numero == "1" and other.numero == "2":
+			return True
+		elif self.numero == "2" and other.numoer == "1":
+			return True
 		else:
 			return self.numero == other.numero
 		
