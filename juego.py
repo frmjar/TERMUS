@@ -11,7 +11,7 @@ class Carta(object):
 	def __eq__(self, other):
 		if self.numero == "3" and other.numero == "K":
 			return True
-		else if self.numero == "K" and other.numero == "3":
+		elif self.numero == "K" and other.numero == "3":
 			return True
 		else:
 			return self.numero == other.numero
@@ -22,12 +22,12 @@ class Carta(object):
 	
 		if not (self.numero in figuras or other.numero in figuras):
 			return int(self.numero) > int(other.numero)
-		else if self.numero in figuras and not other.numero in figuras:
+		elif self.numero in figuras and not other.numero in figuras:
 			if other.numero == "3":
 				return False
 			else:
 				return True
-		else if not self.numero in figuras and other.numero in figuras:
+		elif not self.numero in figuras and other.numero in figuras:
 			if self.numero == "3":
 				if other.numero != "K":
 					return True
@@ -39,7 +39,7 @@ class Carta(object):
 			if self.numero == "J":
 				return False
 			elif self.numero == "Q":
-				if other.numero == "J"
+				if other.numero == "J":
 					return True
 				else:
 					return False
@@ -49,16 +49,19 @@ class Carta(object):
 				else:
 					return True
 				
-	def __st__(self, other):
+	def __lt__(self, other):
+
+		figuras = ["J", "Q", "K"]
+
 		if not (self.numero in figuras or other.numero in figuras):
 			return int(self.numero) < int(other.numero)
-		else if self.numero in figuras and not other.numero in figuras:
+		elif self.numero in figuras and not other.numero in figuras:
 			if other.numero == "3":
-				if self.numero == "K"
+				if self.numero == "K":
 					return False
 				else:
 					return True
-		else if not self.numero in figuras and other.numero in figuras:
+		elif not self.numero in figuras and other.numero in figuras:
 			if self.numero == "3":
 				return False
 		else: 
@@ -68,7 +71,7 @@ class Carta(object):
 				else:
 					return True
 			elif self.numero == "Q":
-				if other.numero == "K"
+				if other.numero == "K":
 					return True
 				else:
 					return False
@@ -134,6 +137,27 @@ class Jugador(object):
 			cartas = carta.devuelve_carta()		
 			print(self.address)	
 			sent = sock.sendto(cartas.encode(), self.address)
+'''			
 			
-			
-			
+carta1 = Carta("3", "Bastos")
+carta2 = Carta("3", "Espadas")
+carta3 = Carta("2", "Bastos")
+carta4 = Carta("Q", "Bastos")
+carta5 = Carta("Q", "Espadas")
+carta6 = Carta("K", "Bastos")
+
+print (str(carta1))
+print (carta1 == carta2)
+print (carta1 == carta3)
+print (carta1 == carta6)
+print (carta1 > carta3)
+print (carta1 > carta1)
+print (carta1 < carta3)
+print (carta1 > carta5)
+print (carta1 == carta5)
+print (carta1 < carta5)
+print (carta1 > carta6)
+print (carta1 == carta6)
+print (carta1 < carta6)
+
+'''
