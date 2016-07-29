@@ -4,11 +4,11 @@ from juego import Jugador
 
 listaIPs = []
 listaJugadores = []
-fase1 = [mus, corto]
-fase2 = [envido, paso]
-fase3 = [envido, paso]
-fase4 = [si, no, envido, paso]
-fase5 = [si, no]
+fase1 = ["mus", "corto"]
+fase2 = ["envido", "paso"]
+fase3 = ["envido", "paso"]
+fase4 = ["si", "no", "envido", "paso"]
+fase5 = ["si", "no"]
 
 baraja = Baraja()
 
