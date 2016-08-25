@@ -1,5 +1,6 @@
 import socket
 import sys
+import os
 
 # Create a UDP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -15,7 +16,9 @@ try:
         data, server = sock.recvfrom(4096)
         print(data.decode("utf-8"))
         rotaciones = rotaciones + 1
-
+    data, addr = sock.recvfrom(4096)
+    print(data)
+    #os.system('clear')
 finally:
     #sock.close()
     print("message sent")

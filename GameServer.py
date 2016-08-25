@@ -2,7 +2,6 @@ import socket
 from juego import Baraja
 from juego import Jugador
 
-listaIPs = []
 listaJugadores = []
 fMus = ["mus", "corto"]
 fGrande = ["envido", "paso"]
@@ -23,22 +22,12 @@ def conexion():
 
     while True and len(listaJugadores) < 4:
         data, address = sock.recvfrom(4096)
-        listaIPs.append(address)        
         print ("======================")        
         data = data.decode("utf-8")
         jugador = Jugador(data, address)
         listaJugadores.append(jugador)
         
     return sock
-
-
-def startGame():
-    #commands
-    print(listaIPs[0])
-    print(listaIPs[1])
-    print(listaIPs[2])
-    print(listaIPs[3])
-
 
 def reparte_inicial(sock):
     for i in range(4):
@@ -55,11 +44,14 @@ def reparte_inicial(sock):
 		for x in listaJugadores:
 '''		
 
+def enviarMensaje(ip, msg, sock):
+    sock.sendto(msg.encode(), ip)
+
 def main():
 
     sock = conexion()
     reparte_inicial(sock)    
-
+    enviarMensaje(listaJugadores[0].address, "testing send", sock)
 
 main()
 

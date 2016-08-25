@@ -148,12 +148,11 @@ class Jugador(object):
 	def muestra_mano(self, sock):
 		print ("Mano de " + self.nombre + ": ")
 		for carta in self.mano:
-			cartas = carta.devuelve_carta()		
+			cartas = str(carta)		
 			print(self.address)	
 			sent = sock.sendto(cartas.encode(), self.address)
 
 
-'''
 
 carta1 = Carta("3", "Bastos")
 carta2 = Carta("3", "Espadas")
@@ -166,9 +165,24 @@ carta6 = Carta("K", "Bastos")
 
 print (carta1)
 
-print (carta10 == carta2)
-print (carta10 == carta3)
-print (carta10 == carta6)
+print (carta1 == carta4)
+print (carta1 < carta4)
+print (carta1 > carta4)
+print (carta1 <= carta4)
+print (carta1 >= carta4)
+
+print (carta1 == carta3)
+print (carta1 < carta3)
+print (carta1 > carta3)
+print (carta1 <= carta3)
+print (carta1 >= carta3)
+
+print (carta1 == carta6)
+print (carta1 < carta6)
+print (carta1 > carta6)
+print (carta1 <= carta6)
+print (carta1 >= carta6)
+'''
 print (carta10 < carta3)
 print (carta10 < carta1)
 print (carta10 <= carta3)
@@ -187,9 +201,9 @@ print (carta10 == carta1)
 print (carta10 > carta6)
 print (carta10 == carta6)
 print (carta10 >= carta6)
+'''
 cartas = [carta1, carta2, carta3, carta4, carta5, carta6, carta9, carta10]
 print (len(cartas))
 cartas.sort()
 for carta in cartas:
 	print (carta)
-'''
