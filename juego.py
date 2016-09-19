@@ -136,6 +136,7 @@ class Jugador(object):
 		self.mano = []
 		self.puntos = 0
 		self.address = address	
+		self.descarte = [0,0,0,0]
 		
 	def suma_puntos(self, puntos):
 		self.puntos = self.puntos + puntos	
