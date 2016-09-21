@@ -136,7 +136,7 @@ class Jugador(object):
 		self.mano = []
 		self.puntos = 0
 		self.address = address	
-		self.descarte = [0,0,0,0]
+		self.descarte = []
 		
 	def suma_puntos(self, puntos):
 		self.puntos = self.puntos + puntos	
@@ -146,12 +146,17 @@ class Jugador(object):
 		if len(self.mano) == 4:
 			self.mano.sort()
 
+	def eliminar_carta(self,posicion):
+		self.mano.pop(posicion)
+
 	def muestra_mano(self, sock):
 		print ("Mano de " + self.nombre + ": ")
 		for carta in self.mano:
 			cartas = str(carta)		
 			print(self.address)	
+			sent = sock.sendto(str.encode("++++++++++++++/++++++++++++++"), self.address)
 			sent = sock.sendto(cartas.encode(), self.address)
+			sent = sock.sendto(str.encode("++++++++++++++/++++++++++++++"), self.address)
 
 
 
@@ -164,47 +169,3 @@ carta10 = Carta("1", "asd")
 carta5 = Carta("Q", "Espadas")
 carta6 = Carta("K", "Bastos")
 
-print (carta1)
-
-print (carta1 == carta4)
-print (carta1 < carta4)
-print (carta1 > carta4)
-print (carta1 <= carta4)
-print (carta1 >= carta4)
-
-print (carta1 == carta3)
-print (carta1 < carta3)
-print (carta1 > carta3)
-print (carta1 <= carta3)
-print (carta1 >= carta3)
-
-print (carta1 == carta6)
-print (carta1 < carta6)
-print (carta1 > carta6)
-print (carta1 <= carta6)
-print (carta1 >= carta6)
-'''
-print (carta10 < carta3)
-print (carta10 < carta1)
-print (carta10 <= carta3)
-print (carta10 >= carta5)
-print (carta10 == carta5)
-print (carta10 == carta5)
-print (carta10 <= carta5)
-
-
-print (carta10 < carta5)
-print (carta1 > carta5)
-
-print (carta10 <= carta1)
-print (carta10 < carta1)
-print (carta10 == carta1)
-print (carta10 > carta6)
-print (carta10 == carta6)
-print (carta10 >= carta6)
-'''
-cartas = [carta1, carta2, carta3, carta4, carta5, carta6, carta9, carta10]
-print (len(cartas))
-cartas.sort()
-for carta in cartas:
-	print (carta)
